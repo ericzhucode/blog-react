@@ -78,7 +78,7 @@ let config = [
     path: '/about',
     exact: true,
     component: Loadable({
-      loader: () => import('../components/article/article.js'),
+      loader: () => import('../components/about/about.js'),
       loading: loadingComponent,
       delay: 300,
     }),
@@ -88,7 +88,7 @@ let config = [
     path: '/articleDetail',
     exact: true,
     component: Loadable({
-      loader: () => import('../components/article/article.js'),
+      loader: () => import('../components/about/about.js'),
       loading: loadingComponent,
       delay: 300,
     }),

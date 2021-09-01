@@ -1,6 +1,5 @@
 import './index.less';
-import logo from '../../assets/userLogo.jpeg';
-import BiaoChenXuYing from '../../assets/BiaoChenXuYing.png';
+import logo from '../../assets/userLogo.png';
 import YingHeZaHuoPu from '../../assets/YingHeZaHuoPu.png';
 import React, { Component } from 'react';
 import { Avatar, message } from 'antd';
@@ -133,13 +132,13 @@ class SliderRight extends Component {
         <div className="introduce">
           <div className="title">技术以内的 BB</div>
           <div className="content">
-            <img style={{'width':'100%'}} src={BiaoChenXuYing} alt="全栈修炼" />
+            <img style={{ 'width': '100%' }} src={BiaoChenXuYing} alt="全栈修炼" />
           </div>
         </div>
         <div className="introduce">
           <div className="title">技术以外的 BB</div>
           <div className="content">
-            <img style={{'width':'100%'}} src={YingHeZaHuoPu} alt="硬核杂货铺" />
+            <img style={{ 'width': '100%' }} src={YingHeZaHuoPu} alt="硬核杂货铺" />
           </div>
         </div>
       </div>

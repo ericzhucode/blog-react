@@ -177,19 +177,20 @@ class Articles extends Component {
         transitionLeaveTimeout={1000}
       >
         <li key={item._id} className="have-img">
-          <a className="wrap-img" href="/" target="_blank">
-            <img
-              className="img-blur-done"
-              data-src={item.img_url}
-              data-has-lazy-src="false"
-              src={bg}
-              alt="文章封面"
-            />
-          </a>
+          <div className="image">
+            <a className="wrap-img" href="/" target="_blank">
+              <img
+                className="img-blur-done"
+                data-src={item.img_url}
+                data-has-lazy-src="false"
+                src={bg}
+                alt="文章封面"
+              />
+            </a>
+          </div>
           <div className="content">
             <Link
               className="title"
-              target="_blank"
               to={`/articleDetail?article_id=${item._id}`}
             >
               {item.title}
@@ -202,15 +203,11 @@ class Articles extends Component {
               >
                 <Icon type="eye" theme="outlined" /> {item.meta.views}
               </Link>{' '}
-              <Link
-                target="_blank"
-                to={`/articleDetail?article_id=${item._id}`}
+              <Link to={`/articleDetail?article_id=${item._id}`}
               >
                 <Icon type="message" theme="outlined" /> {item.meta.comments}
               </Link>{' '}
-              <Link
-                target="_blank"
-                to={`/articleDetail?article_id=${item._id}`}
+              <Link to={`/articleDetail?article_id=${item._id}`}
               >
                 <Icon type="heart" theme="outlined" /> {item.meta.likes}
               </Link>

@@ -1,6 +1,6 @@
 import './index.less';
 import './marked.css';
-import logo from '../../assets/userLogo.jpeg';
+import logo from '../../assets/blogLogo.png';
 import React, { Component } from 'react';
 import Comment from '../comments/comment';
 import CommentList from '../comments/list';
@@ -15,7 +15,7 @@ import {
   isMobileOrPc,
 } from '../../utils/utils';
 
-class Articles extends Component {
+class About extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -27,7 +27,7 @@ class Articles extends Component {
       type: 1, //文章类型 => 1: 普通文章，2: 简历，3: 管理员介绍
       articleDetail: {
         _id: '',
-        author: '夜尽天明',
+        author: 'Shu Shu',
         category: [],
         comments: [],
         create_time: '',
@@ -57,7 +57,7 @@ class Articles extends Component {
 
   handleAddComment() {
     if (!this.state.articleDetail._id) {
-      message.error('该文章不存在！', 1);
+      message.error('该文章不存在111！', 1);
       return;
     }
 
@@ -100,7 +100,7 @@ class Articles extends Component {
         { withCredentials: true },
       )
       .then(res => {
-        // console.log('res:', res);
+        console.log('res:', res);
         if (res.status === 200 && res.data.code === 0) {
           message.success(res.data.message, 1);
           const times = this.state.times + 1
@@ -226,10 +226,10 @@ class Articles extends Component {
   }
 
   componentWillUnmount() {
-    document.title = '夜尽天明 的博客网站';
+    document.title = 'Shu Shu 的博客网站';
     document
       .getElementById('keywords')
-      .setAttribute('content', '夜尽天明 的博客网站');
+      .setAttribute('content', 'Shu Shu 的博客网站');
     document
       .getElementById('description')
       .setAttribute(
@@ -365,11 +365,11 @@ class Articles extends Component {
             }}
           />
         ) : (
-            ''
-          )}
+          ''
+        )}
       </div>
     );
   }
 }
 
-export default Articles;
+export default About;

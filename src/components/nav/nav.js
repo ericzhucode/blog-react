@@ -1,5 +1,4 @@
 import './index.less';
-import logo from '../../assets/logo.jpg';
 import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -14,15 +13,23 @@ import {
   message,
   Avatar,
 } from 'antd';
+import {
+  CopyOutlined,
+  FireOutlined,
+  RiseOutlined,
+  ProjectOutlined,
+  CommentOutlined,
+  ContactsOutlined,
+  BarsOutlined
+} from '@ant-design/icons';
 import Register from '../register/register';
 import Login from '../login/login';
-import { isMobileOrPc, getQueryStringByName } from '../../utils/utils';
-
+import { getQueryStringByName } from '../../utils/utils';
 import https from '../../utils/https';
 import urls from '../../utils/urls';
 import { loginSuccess, loginFailure } from '../../store/actions/user';
 import LoadingCom from '../loading/loading';
-
+import logo from '../../assets/blogLogo.png';
 const { Header } = Layout;
 const SubMenu = Menu.SubMenu;
 const MenuItemGroup = Menu.ItemGroup;
@@ -35,7 +42,6 @@ class Nav extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isMobile: false,
       visible: false,
       placement: 'top',
       current: null,
@@ -60,11 +66,6 @@ class Nav extends Component {
     this.getUser = this.getUser.bind(this);
   }
   componentDidMount() {
-    if (isMobileOrPc()) {
-      this.setState({
-        isMobile: true,
-      });
-    }
     const code = getQueryStringByName('code');
     if (code) {
       this.setState(
@@ -232,7 +233,7 @@ class Nav extends Component {
 
     return (
       <div className="left">
-        {this.state.isMobile ? (
+        {this.props.isMobile ? (
           <Header
             className="header"
             style={{
@@ -248,24 +249,23 @@ class Nav extends Component {
           >
             <Row className="container">
               <Col style={{ width: '25%', float: 'left', lineHeight: '64px' }}>
-                <a href="http://biaochenxuying.cn/main.html">
+                <Link to="/">
                   <div className="logo">
                     <img src={logo} alt="" />
                   </div>
-                </a>
+                </Link>
               </Col>
               <Col style={{ textAlign: 'center', width: '50%', float: 'left' }}>
                 <div className="nav-title"> {this.state.navTitle} </div>
               </Col>
               <Col style={{ textAlign: 'right', width: '25%', float: 'left' }}>
                 <div>
-                  <Icon
-                    type="bars"
+                  <BarsOutlined
                     onClick={this.showDrawer}
                     style={{
                       fontSize: '40px',
-                      marginRight: '10px',
-                      marginTop: '10px',
+                      marginRight: '20px',
+                      marginTop: '13px',
                     }}
                   />
                 </div>
@@ -274,13 +274,12 @@ class Nav extends Component {
           </Header>
         ) : (
           <Header
-            className="header "
+            className="header"
             style={{
-              position: 'fixed',
               zIndex: 1,
               top: 0,
               width: '100%',
-              minWidth: '1200px',
+              minWidth: '1180px',
               height: '66px',
               float: 'left',
               backgroundColor: 'white',
@@ -288,14 +287,7 @@ class Nav extends Component {
             }}
           >
             <Row className="container">
-              <Col style={{ width: '120px', float: 'left' }}>
-                <a href="http://biaochenxuying.cn/main.html">
-                  <div className="logo ">
-                    <img src={logo} alt="" />
-                  </div>
-                </a>
-              </Col>
-              <Col style={{ width: '780px', float: 'left' }}>
+              <Col style={{ width: '700px', float: 'left' }}>
                 <Menu
                   theme="light"
                   mode="horizontal"
@@ -304,58 +296,52 @@ class Nav extends Component {
                   selectedKeys={[this.state.menuCurrent]}
                   style={{ lineHeight: '64px', borderBottom: 'none' }}
                 >
-                  <Menu.Item key="9">
-                    <Link to="/">
-                      <Icon type="home" theme="outlined" />
-                      首页
-                    </Link>
-                  </Menu.Item>
                   <Menu.Item key="1">
                     <Link to="/articles">
-                      <Icon type="ordered-list" theme="outlined" />
+                      <CopyOutlined />
                       文章
                     </Link>
                   </Menu.Item>
                   <Menu.Item key="2">
                     <Link to="/hot">
-                      <Icon type="fire" theme="outlined" />
+                      <FireOutlined />
                       热门
                     </Link>
                   </Menu.Item>
                   <Menu.Item key="8">
                     <Link to="/archive">
-                      <Icon type="project" theme="outlined" />
+                      <RiseOutlined />
                       归档
                     </Link>
                   </Menu.Item>
                   <Menu.Item key="7">
                     <Link to="/project">
-                      <Icon type="database" theme="outlined" />
+                      <ProjectOutlined />
                       项目
                     </Link>
                   </Menu.Item>
-                  <Menu.Item key="3">
+                  {/* <Menu.Item key="3">
                     <Link to="/timeLine">
                       <Icon type="hourglass" theme="outlined" />
                       历程
                     </Link>
-                  </Menu.Item>
+                  </Menu.Item> */}
                   <Menu.Item key="4">
                     <Link to="/message">
-                      <Icon type="message" theme="outlined" />
+                      <CommentOutlined />
                       留言
                     </Link>
                   </Menu.Item>
                   <Menu.Item key="5">
                     <Link to="/about">
-                      <Icon type="user" theme="outlined" />
+                      <ContactsOutlined />
                       关于
                     </Link>
                   </Menu.Item>
                 </Menu>
               </Col>
               <Col
-                style={{ textAlign: 'right', width: '300px', float: 'left' }}
+                style={{ textAlign: 'right', float: 'left', flex: '1' }}
               >
                 {userInfo ? (
                   <Menu
@@ -391,19 +377,10 @@ class Nav extends Component {
                   <div>
                     <Button
                       type="primary"
-                      icon="login"
                       style={{ marginRight: '15px' }}
                       onClick={this.showLoginModal}
                     >
-                      登 录
-                    </Button>
-                    <Button
-                      type="danger"
-                      icon="logout"
-                      style={{ marginRight: '15px' }}
-                      onClick={this.showRegisterModal}
-                    >
-                      注 册
+                      登录 / 注册
                     </Button>
                   </div>
                 )}
@@ -474,7 +451,7 @@ class Nav extends Component {
                   <Icon type="login" /> 登录
                 </p>
                 <p onClick={this.showRegisterModal}>
-                  <Icon type="logout" /> 注册{' '}
+                  <Icon type="registry" /> 注册{' '}
                 </p>
               </div>
             )}
@@ -483,6 +460,7 @@ class Nav extends Component {
         <Login
           visible={this.state.login}
           handleCancel={this.handleLoginCancel}
+          getMsg={this.showRegisterModal}
         />
         <Register
           visible={this.state.register}

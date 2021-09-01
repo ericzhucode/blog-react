@@ -9,7 +9,7 @@ const config = {
 
 // 本地开发环境下 （参数可以直接用）
 if (process.env.NODE_ENV === 'development') {
-  config.redirect_uri = "http://localhost:3001/login"
+  config.redirect_uri = "http://localhost:3005/login"
   config.client_id = "502176cec65773057a9e"
   config.client_secret = "65d444de381a026301a2c7cffb6952b9a86ac235"
 }

@@ -63,7 +63,7 @@ function init() {
 
   var material = new THREE.ShaderMaterial({
     uniforms: {
-      color: { value: new THREE.Color(0x1890ff) },
+      color: { value: new THREE.Color(0xFFFFFF) },
     },
     vertexShader:
       'attribute float scale;void main() {vec4 mvPosition = modelViewMatrix * vec4( position, 1.0 );gl_PointSize = scale * ( 300.0 / - mvPosition.z );gl_Position = projectionMatrix * mvPosition;}',
