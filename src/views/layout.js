@@ -50,7 +50,7 @@ class Layouts extends Component {
                 ) : ''}
                 <Content>
                   <Layout style={{ margin: '30px auto', maxWidth: 900, width: "55%", background: "transparent" }}>
-                    <Content style={{ padding: '20px 5px 0px 5px', minHeight: 280, minWidth: 500 }}>
+                    <Content style={{ padding: "5px", minHeight: 280, minWidth: 500 }}>
                       {this.props.children}
                     </Content>
                   </Layout>

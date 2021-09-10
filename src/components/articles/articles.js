@@ -1,6 +1,5 @@
 import './index.less';
 import React, { Component } from 'react';
-import { Icon } from 'antd';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -16,6 +15,11 @@ import {
   getQueryStringByName,
   timestampToTime,
 } from '../../utils/utils';
+import {
+  EyeOutlined,
+  MessageOutlined,
+  HeartOutlined
+} from '@ant-design/icons';
 /*actions*/
 import { saveArticlesList } from '../../store/actions/articles';
 
@@ -185,32 +189,35 @@ class Articles extends Component {
             </Link>
           </div>
           <div className="image">
-            <Link className="wrap-img" to={`/articleDetail?article_id=${item._id}`}>
-              <img
-                className="img-blur-done"
-                data-src={item.img_url}
-                data-has-lazy-src="false"
-                src={bg}
-                alt="文章封面"
-              />
-            </Link>
+            {
+              item.img_url.search(/http/i) === -1 ? '' :
+                (<Link className="wrap-img" to={`/articleDetail?article_id=${item._id}`}>
+                  <img
+                    className="img-blur-done"
+                    data-src={item.img_url}
+                    data-has-lazy-src="false"
+                    src={bg}
+                    alt="文章封面"
+                  />
+                </Link>)
+            }
           </div>
           <div className="content">
-            <p className="abstract">{item.desc}</p>
+            <p className="description">{item.desc}</p>
             <div className="meta">
               <Link
                 rel="noopener noreferrer"
                 to={`/articleDetail?article_id=${item._id}`}
               >
-                <Icon type="eye" theme="outlined" /> {item.meta.views}
+                <EyeOutlined /> {item.meta.views}
               </Link>{' '}
               <Link to={`/articleDetail?article_id=${item._id}`}
               >
-                <Icon type="message" theme="outlined" /> {item.meta.comments}
+                <MessageOutlined /> {item.meta.comments}
               </Link>{' '}
               <Link to={`/articleDetail?article_id=${item._id}`}
               >
-                <Icon type="heart" theme="outlined" /> {item.meta.likes}
+                <HeartOutlined /> {item.meta.likes}
               </Link>
               <span className="time">
                 {item.create_time

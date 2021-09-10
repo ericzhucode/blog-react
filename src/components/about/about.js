@@ -57,7 +57,7 @@ class About extends Component {
 
   handleAddComment() {
     if (!this.state.articleDetail._id) {
-      message.error('该文章不存在111！', 1);
+      message.error('该文章不存在！', 1);
       return;
     }
 
@@ -257,7 +257,7 @@ class About extends Component {
 
   render() {
     console.log('isMobile :', this.state.isMobile);
-    let width = this.state.isMobile ? '100%' : '75%';
+    let width = this.state.isMobile ? '100%' : '90%';
     const list = this.state.articleDetail.tags.map((item, i) => (
       <span key={item.id} className="tag">
         {item.name}
@@ -266,7 +266,7 @@ class About extends Component {
 
     return (
       <div className="article clearfix">
-        <div className="detail fl" style={{ width: width }}>
+        <div className="detail fl" style={{ width: width, margin: "0 auto" }}>
           <div className="header">
             <div className="title">{this.state.articleDetail.title}</div>
             <div className="author">
