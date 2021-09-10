@@ -7,7 +7,6 @@ import { connect } from 'react-redux';
 import https from '../../utils/https';
 import urls from '../../utils/urls';
 import LoadingCom from '../loading/loading';
-import LoadEndCom from '../loadEnd/loadEnd';
 import bg from '../../assets/bg.jpg';
 import {
   throttle,
@@ -177,8 +176,16 @@ class Articles extends Component {
         transitionLeaveTimeout={1000}
       >
         <li key={item._id} className="have-img">
+          <div className="title">
+            <Link
+              className="title"
+              to={`/articleDetail?article_id=${item._id}`}
+            >
+              {item.title}
+            </Link>
+          </div>
           <div className="image">
-            <a className="wrap-img" href="/" target="_blank">
+            <Link className="wrap-img" to={`/articleDetail?article_id=${item._id}`}>
               <img
                 className="img-blur-done"
                 data-src={item.img_url}
@@ -186,15 +193,9 @@ class Articles extends Component {
                 src={bg}
                 alt="文章封面"
               />
-            </a>
+            </Link>
           </div>
           <div className="content">
-            <Link
-              className="title"
-              to={`/articleDetail?article_id=${item._id}`}
-            >
-              {item.title}
-            </Link>
             <p className="abstract">{item.desc}</p>
             <div className="meta">
               <Link
@@ -233,7 +234,6 @@ class Articles extends Component {
           {list}
         </ul>
         {this.state.isLoading ? <LoadingCom /> : ''}
-        {this.state.isLoadEnd ? <LoadEndCom /> : ''}
       </div>
     );
   }

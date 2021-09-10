@@ -4,7 +4,6 @@ import { Timeline, Icon, message } from 'antd';
 import https from '../../utils/https';
 import urls from '../../utils/urls';
 import LoadingCom from '../loading/loading';
-import LoadEndCom from '../loadEnd/loadEnd';
 import {
   getScrollTop,
   getDocumentHeight,
@@ -106,7 +105,6 @@ class TimeLineCustom extends Component {
       <div className="time-line">
         <Timeline mode="alternate">{list}</Timeline>
         {this.state.isLoading ? <LoadingCom /> : ''}
-        {this.state.isLoadEnd ? <LoadEndCom /> : ''}
       </div>
     );
   }

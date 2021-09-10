@@ -5,7 +5,6 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import https from '../../utils/https';
 import urls from '../../utils/urls';
 import LoadingCom from '../loading/loading';
-import LoadEndCom from '../loadEnd/loadEnd';
 import {
   getScrollTop,
   getDocumentHeight,
@@ -108,7 +107,6 @@ class Project extends Component {
       <div className="left">
         <ul className="project">{list}</ul>
         {this.state.isLoading ? <LoadingCom /> : ''}
-        {this.state.isLoadEnd ? <LoadEndCom /> : ''}
       </div>
     );
   }

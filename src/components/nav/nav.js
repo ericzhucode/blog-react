@@ -11,7 +11,6 @@ import {
   Button,
   Drawer,
   message,
-  Avatar,
 } from 'antd';
 import {
   CopyOutlined,
@@ -30,9 +29,8 @@ import urls from '../../utils/urls';
 import { loginSuccess, loginFailure } from '../../store/actions/user';
 import LoadingCom from '../loading/loading';
 import logo from '../../assets/blogLogo.png';
+import blogLogo from '../../assets/blogLogo.png';
 const { Header } = Layout;
-const SubMenu = Menu.SubMenu;
-const MenuItemGroup = Menu.ItemGroup;
 
 @connect(
   state => state.user,
@@ -273,122 +271,80 @@ class Nav extends Component {
             </Row>
           </Header>
         ) : (
-          <Header
-            className="header"
-            style={{
-              zIndex: 1,
-              top: 0,
-              width: '100%',
-              minWidth: '1180px',
-              height: '66px',
-              float: 'left',
-              backgroundColor: 'white',
-              borderBottom: '1px solid #eee',
-            }}
-          >
-            <Row className="container">
-              <Col style={{ width: '700px', float: 'left' }}>
-                <Menu
-                  theme="light"
-                  mode="horizontal"
-                  defaultSelectedKeys={['1']}
-                  onClick={this.handleMenu}
-                  selectedKeys={[this.state.menuCurrent]}
-                  style={{ lineHeight: '64px', borderBottom: 'none' }}
-                >
-                  <Menu.Item key="1">
-                    <Link to="/articles">
-                      <CopyOutlined />
-                      文章
-                    </Link>
-                  </Menu.Item>
-                  <Menu.Item key="2">
-                    <Link to="/hot">
-                      <FireOutlined />
-                      热门
-                    </Link>
-                  </Menu.Item>
-                  <Menu.Item key="8">
-                    <Link to="/archive">
-                      <RiseOutlined />
-                      归档
-                    </Link>
-                  </Menu.Item>
-                  <Menu.Item key="7">
-                    <Link to="/project">
-                      <ProjectOutlined />
-                      项目
-                    </Link>
-                  </Menu.Item>
-                  {/* <Menu.Item key="3">
-                    <Link to="/timeLine">
-                      <Icon type="hourglass" theme="outlined" />
-                      历程
-                    </Link>
-                  </Menu.Item> */}
-                  <Menu.Item key="4">
-                    <Link to="/message">
-                      <CommentOutlined />
-                      留言
-                    </Link>
-                  </Menu.Item>
-                  <Menu.Item key="5">
-                    <Link to="/about">
-                      <ContactsOutlined />
-                      关于
-                    </Link>
-                  </Menu.Item>
-                </Menu>
-              </Col>
-              <Col
-                style={{ textAlign: 'right', float: 'left', flex: '1' }}
-              >
+          <div className="sider">
+            <div className="nav-logo" style={{ textAlign: 'center' }}>
+              <Link to="/" >
+                <img src={blogLogo} alt="" style={{ width: '40%', borderRadius: '25px' }} />
+              </Link>
+              <p className="name">
+                Shu Shu
+              </p>
+              <p>
+                Creative Code, Create Life
+              </p>
+              <p>
+                Frontend Software Engineer + SRE
+              </p>
+            </div>
+            <div className="nav">
+              <Menu theme="light" defaultSelectedKeys={['1']} mode="inline">
+                <Menu.Item key="1" icon={<CopyOutlined />}>
+                  <Link to="/articles" >
+                    文章
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="2" icon={<FireOutlined />}>
+                  <Link to="/hot">
+                    热门
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="3" icon={<RiseOutlined />}>
+                  <Link to="/archive">
+                    归档
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="4" icon={<ProjectOutlined />}>
+                  <Link to="/project">
+                    项目
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="5" icon={<CommentOutlined />}>
+                  <Link to="/message">
+                    留言
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="6" icon={<ContactsOutlined />}>
+                  <Link to="/about">
+                    关于
+                  </Link>
+                </Menu.Item>
+              </Menu>
+            </div>
+            <div className="login">
+              <Menu>
                 {userInfo ? (
-                  <Menu
-                    onClick={this.handleLogout}
-                    style={{
-                      width: 220,
-                      lineHeight: '64px',
-                      display: 'inline-block',
-                    }}
-                    selectedKeys={[this.state.current]}
-                    mode="horizontal"
-                  >
-                    <SubMenu
-                      title={
-                        <span className="submenu-title-wrapper">
-                          <Avatar
-                            onClick={this.showDrawer}
-                            size="large"
-                            icon="user"
-                            src={userInfo.avatar}
-                            style={{ marginRight: 5 }}
-                          />
-                          {userInfo.name}
-                        </span>
-                      }
-                    >
-                      <MenuItemGroup>
-                        <Menu.Item key="logout">退出</Menu.Item>
-                      </MenuItemGroup>
-                    </SubMenu>
-                  </Menu>
-                ) : (
-                  <div>
+                  <Menu.Item key="1">
                     <Button
                       type="primary"
-                      style={{ marginRight: '15px' }}
+                      onClick={this.handleLogout}
+                    >
+                      退出
+                    </Button>
+                  </Menu.Item>
+                ) : (
+                  <Menu.Item key="1">
+                    <Button
+                      type="primary"
                       onClick={this.showLoginModal}
                     >
                       登录 / 注册
                     </Button>
-                  </div>
+                  </Menu.Item>
                 )}
-              </Col>
-            </Row>
-          </Header>
+              </Menu>
+            </div>
+          </div>
         )}
-
         <Drawer
           placement={this.state.placement}
           closable={false}

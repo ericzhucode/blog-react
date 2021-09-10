@@ -1,5 +1,6 @@
 .home {
   position: fixed;
+  display: table;
   width: 100%;
   height: 100%;
   .bgimg {
@@ -10,18 +11,19 @@
   }
   .content {
     position: relative;
-    max-width: 620px;
-    max-height: 800px;
-    margin: auto;
-    width: 100%;
-    height: 100%;
+    display: table-cell;
+    vertical-align: middle;
     text-align: center;
     color: #fff;
+    .wrapper {
+      max-width: 620px;
+      max-height: 800px;
+      margin: auto;
+    }
     .home-header {
       .link {
         display: block;
         width: 150px;
-        border-radius: 50%;
         margin: auto;
       }
       .home-logo {
@@ -31,22 +33,6 @@
     }
     .home-body {
       margin-top: 30px;
-      .list {
-        .link {
-          border: 1px solid rgba(255, 255, 255, 0.658);
-          margin: auto 3px;
-          display: inline-block;
-          padding: 5px 15px;
-          min-width: 80px;
-          color: #fff;
-          font-size: 16px;
-          border-radius: 20px;
-        }
-        .link:hover {
-          color: #fff;
-          filter: brightness(50%);
-        }
-      }
       .motto {
         margin: 20px auto;
         font-size: 15px;
@@ -55,10 +41,33 @@
         font-size: 20px;
       }
       .seperator {
-        width: 25%;
+        width: 40%;
         margin: 25px auto;
         border: none;
         border-top: 1px solid rgba(255, 255, 255, 0.151);
+      }
+      .link {
+        display: inline-block;
+        padding: 5px 20px;
+        margin: auto 3px;
+        color: #fff;
+      }
+      .link:hover {
+        color: #fff;
+        filter: brightness(50%);
+      }
+      .list-internal {
+        .link {
+          border: 1px solid rgba(255, 255, 255, 0.658);
+          border-radius: 20px;
+          font-size: 16px;
+        }
+      }
+      .list-external {
+        margin-top: 30px;
+        .link {
+          font-size: 20px;
+        }
       }
     }
   }

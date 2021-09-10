@@ -4,7 +4,6 @@ import React, { Component } from 'react';
 import { Layout, BackTop } from 'antd';
 import Nav from '../components/nav/nav';
 import Index from '../components/home/index';
-import LeftSider from '../components/sider';
 import { isMobileOrPc } from '../utils/utils';
 const { Content, Footer, Sider } = Layout;
 
@@ -12,7 +11,6 @@ class Layouts extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      collapsed: false,
       isMobile: false,
     };
   }
@@ -23,10 +21,6 @@ class Layouts extends Component {
         isMobile: true,
       });
     }
-  }
-
-  onCollapse = collapsed => {
-    this.setState({ collapsed })
   }
 
   render() {
@@ -42,22 +36,25 @@ class Layouts extends Component {
           <div>
             <Layout style={{ minHeight: '100vh' }}>
               {!this.state.isMobile ? (
-                <Sider collapsible collapsed={this.state.collapsed} onCollapse={this.onCollapse}>
-                  <LeftSider />
+                <Sider width={300} style={{ background: "transparent", borderRight: "1px solid rgba(80, 79, 79, 0.151)" }}>
+                  <Nav pathname={this.props.location.pathname} isMobile={this.state.isMobile} />
+                  <Footer style={{ textAlign: 'center', background: "transparent" }}>
+                    <p>面向md文档编程的一年</p>
+                    <p>©2021 Created by Eric Shu</p>
+                  </Footer>
                 </Sider>
               ) : ''}
               <Layout className="layout">
-                <Nav pathname={this.props.location.pathname} isMobile={this.state.isMobile} />
+                {this.state.isMobile ? (
+                  <Nav pathname={this.props.location.pathname} isMobile={this.state.isMobile} />
+                ) : ''}
                 <Content>
-                  <Layout style={{ padding: '24px 0', background: '#fff', width: '60%', margin: 'auto' }}>
-                    <Content style={{ padding: '0 24px 0 0', minHeight: 280 }}>
+                  <Layout style={{ margin: '30px auto', maxWidth: 900, width: "55%", background: "transparent" }}>
+                    <Content style={{ padding: '20px 5px 0px 5px', minHeight: 280, minWidth: 500 }}>
                       {this.props.children}
                     </Content>
                   </Layout>
                 </Content>
-                <Footer style={{ textAlign: 'center', background: '#fff' }}>
-                  前端练习生 ©2021 Created by Eric Shu
-                </Footer>
               </Layout>
             </Layout>
             <BackTop />
