@@ -13,13 +13,14 @@ import {
   message,
 } from 'antd';
 import {
-  CopyOutlined,
   FireOutlined,
-  RiseOutlined,
+  CodeOutlined,
   ProjectOutlined,
   CommentOutlined,
   ContactsOutlined,
-  BarsOutlined
+  BarsOutlined,
+  CarOutlined,
+  EditOutlined
 } from '@ant-design/icons';
 import Register from '../register/register';
 import Login from '../login/login';
@@ -56,7 +57,7 @@ class Nav extends Component {
     this.showRegisterModal = this.showRegisterModal.bind(this);
     this.handleLoginCancel = this.handleLoginCancel.bind(this);
     this.handleRegisterCancel = this.handleRegisterCancel.bind(this);
-    this.initMenu = this.initMenu.bind(this);
+    this.initNav = this.initNav.bind(this);
     this.handleMenu = this.handleMenu.bind(this);
     this.handleLogout = this.handleLogout.bind(this);
     this.showDrawer = this.showDrawer.bind(this);
@@ -78,7 +79,8 @@ class Nav extends Component {
         },
       );
     }
-    this.initMenu(this.props.pathname);
+    console.log(this.props);
+    this.initNav(this.props.pathname);
   }
 
   showDrawer = () => {
@@ -93,37 +95,32 @@ class Nav extends Component {
     });
   };
 
-  initMenu(name) {
-    let key = '9';
+  initNav(name) {
+    let key = '';
     let navTitle = '';
-    if (name === '/') {
-      key = '9';
-      navTitle = '首页';
-    } else if (name === '/articles') {
+    if (name === '/articles') {
       key = '1';
-      navTitle = '文章';
-    } else if (name === '/hot') {
+      navTitle = '技术';
+    } else if (name === '/travel') {
       key = '2';
-      navTitle = '热门';
-    } else if (name === '/timeLine') {
+      navTitle = '旅游';
+    } else if (name === '/notes') {
       key = '3';
-      navTitle = '历程';
-    } else if (name === '/message') {
+      navTitle = '随笔';
+    } else if (name === '/archive') {
       key = '4';
+      navTitle = '归档';
+    } else if (name === '/hot') {
+      key = '5';
+      navTitle = '热门';
+    } else if (name === '/message') {
+      key = '6';
       navTitle = '留言';
     } else if (name === '/about') {
-      key = '5';
-      navTitle = '关于我';
-    } else if (name === '/articleDetail') {
-      key = '6';
-      navTitle = '文章详情';
-    } else if (name === '/project') {
       key = '7';
-      navTitle = '项目';
-    } else if (name === '/archive') {
-      key = '8';
-      navTitle = '归档';
+      navTitle = '关于';
     }
+    console.log('menuCurrent', key);
     this.setState({
       navTitle,
       menuCurrent: key,
@@ -131,7 +128,7 @@ class Nav extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    this.initMenu(nextProps.pathname);
+    this.initNav(nextProps.pathname);
   }
 
   getUser(code) {
@@ -228,6 +225,7 @@ class Nav extends Component {
     if (window.sessionStorage.userInfo) {
       userInfo = JSON.parse(window.sessionStorage.userInfo);
     }
+    const { menuCurrent } = this.state
 
     return (
       <div className="left">
@@ -287,33 +285,38 @@ class Nav extends Component {
               </p>
             </div>
             <div className="nav">
-              <Menu theme="light" defaultSelectedKeys={['1']} mode="inline">
-                <Menu.Item key="1" icon={<CopyOutlined />}>
+              <Menu theme="light" selectedKeys={[menuCurrent]} mode="inline">
+                <Menu.Item key="1" icon={<CodeOutlined />}>
                   <Link to="/articles" >
-                    文章
+                    技术
                   </Link>
                 </Menu.Item>
-                <Menu.Item key="2" icon={<FireOutlined />}>
-                  <Link to="/hot">
-                    热门
+                <Menu.Item key="2" icon={<CarOutlined />}>
+                  <Link to="/travel">
+                    旅游
                   </Link>
                 </Menu.Item>
-                <Menu.Item key="3" icon={<RiseOutlined />}>
+                <Menu.Item key="3" icon={<EditOutlined />}>
+                  <Link to="/notes">
+                    随笔
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="4" icon={<ProjectOutlined />}>
                   <Link to="/archive">
                     归档
                   </Link>
                 </Menu.Item>
-                <Menu.Item key="4" icon={<ProjectOutlined />}>
-                  <Link to="/project">
-                    项目
+                <Menu.Item key="5" icon={<FireOutlined />}>
+                  <Link to="/hot">
+                    热门
                   </Link>
                 </Menu.Item>
-                <Menu.Item key="5" icon={<CommentOutlined />}>
+                <Menu.Item key="6" icon={<CommentOutlined />}>
                   <Link to="/message">
                     留言
                   </Link>
                 </Menu.Item>
-                <Menu.Item key="6" icon={<ContactsOutlined />}>
+                <Menu.Item key="7" icon={<ContactsOutlined />}>
                   <Link to="/about">
                     关于
                   </Link>

@@ -36,7 +36,7 @@ class Layouts extends Component {
           <div>
             <Layout style={{ minHeight: '100vh' }}>
               {!this.state.isMobile ? (
-                <Sider width={300} style={{ background: "transparent", borderRight: "1px solid rgba(80, 79, 79, 0.151)" }}>
+                <Sider width={300} style={{ background: "transparent", minHeight: 850, borderRight: "1px solid rgba(80, 79, 79, 0.151)" }}>
                   <Nav pathname={this.props.location.pathname} isMobile={this.state.isMobile} />
                   <Footer style={{ textAlign: 'center', background: "transparent" }}>
                     <p>面向md文档编程的一年</p>

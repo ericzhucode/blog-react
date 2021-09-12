@@ -41,16 +41,16 @@ class Index extends Component {
               <hr class="seperator" />
               <div className="list-internal">
                 <Link className="link" to={`/articles`}>
-                  文章
+                  技术
                 </Link>
                 <Link className="link" to={`/project`}>
-                  项目
+                  旅游
                 </Link>
                 <Link className="link" to={`/project`}>
-                  项目
+                  随笔
                 </Link>
-                <Link className="link" to={`/project`}>
-                  项目
+                <Link className="link" to={`/about`}>
+                  关于
                 </Link>
               </div>
               <div className="list-external">
