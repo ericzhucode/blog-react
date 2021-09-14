@@ -34,7 +34,7 @@ class Index extends Component {
               </Link>
             </div>
             <div className="home-body">
-              <div className="introduce"> Shu Shu Blog </div>
+              <div className="introduce"> Shu Blog </div>
               {/* 不做开发，死不瞑目
               加班到天明，学习到昏厥 */}
               <div className="motto"> 如果事与愿违，一定另有安排 ！ </div>

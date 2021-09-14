@@ -24,11 +24,17 @@ class Layouts extends Component {
   }
 
   render() {
-    let pathName = this.props.location.pathname;
-
+    const pathName = this.props.location.pathname;
     let isIndexPage = false;
     if (pathName === '/') {
       isIndexPage = true;
+    }
+
+    let layoutWidth = "75%";
+    let layoutMaxWidth = 1200;
+    if (pathName === '/articles') {
+      layoutWidth = "50%";
+      layoutMaxWidth = 600;
     }
     return (
       <div className="Layouts">
@@ -36,7 +42,7 @@ class Layouts extends Component {
           <div>
             <Layout style={{ minHeight: '100vh' }}>
               {!this.state.isMobile ? (
-                <Sider width={300} style={{ background: "transparent", minHeight: 850, borderRight: "1px solid rgba(80, 79, 79, 0.151)" }}>
+                <Sider width={300} style={{ background: "transparent", borderRight: "1px solid rgba(80, 79, 79, 0.151)" }}>
                   <Nav pathname={this.props.location.pathname} isMobile={this.state.isMobile} />
                   <Footer style={{ textAlign: 'center', background: "transparent" }}>
                     <p>面向md文档编程的一年</p>
@@ -49,7 +55,7 @@ class Layouts extends Component {
                   <Nav pathname={this.props.location.pathname} isMobile={this.state.isMobile} />
                 ) : ''}
                 <Content>
-                  <Layout style={{ margin: '30px auto', maxWidth: 900, width: "55%", background: "transparent" }}>
+                  <Layout style={{ margin: '30px auto', maxWidth: layoutMaxWidth, width: layoutWidth, background: "transparent" }}>
                     <Content style={{ padding: "5px", minHeight: 280, minWidth: 500 }}>
                       {this.props.children}
                     </Content>

@@ -4,7 +4,7 @@ import logo from '../../assets/blogLogo.png';
 import React, { Component } from 'react';
 import Comment from '../comments/comment';
 import CommentList from '../comments/list';
-import { Icon, Avatar, message, Button } from 'antd';
+import { Icon, Avatar, message } from 'antd';
 import https from '../../utils/https';
 import urls from '../../utils/urls';
 import LoadingCom from '../loading/loading';
@@ -330,7 +330,7 @@ class About extends Component {
               }}
             />
           </div>
-          <div className="heart">
+          {/* <div className="heart">
             <Button
               type="danger"
               size="large"
@@ -340,7 +340,7 @@ class About extends Component {
             >
               点赞
             </Button>
-          </div>
+          </div> */}
           <Comment
             content={this.state.content}
             isSubmitLoading={this.state.isSubmitLoading}

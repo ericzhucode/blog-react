@@ -1,6 +1,7 @@
 import './index.less';
 import React, { Component } from 'react';
-import { Avatar, Input } from 'antd';
+import { Avatar, Button, Input } from 'antd';
+import GuestIcon from '../../assets/GuestIcon.png'
 
 const { TextArea } = Input;
 
@@ -13,51 +14,43 @@ class Comment extends Component {
     };
   }
 
-  componentWillMount() {}
+  componentWillMount() { }
 
   render() {
-    let userInfo = {
-      id: '',
-      name: '',
-      avatar: '',
-    };
-    if (window.sessionStorage.userInfo) {
-      userInfo = JSON.parse(window.sessionStorage.userInfo);
-    }
     return (
       <div className="comment">
-        <div className="avatar">
+        <div className="comment-avatar">
           <Avatar
             className="auth-logo"
-            size={50}
-            icon="user"
-            src={userInfo.avatar}
+            size={90}
+            src={GuestIcon}
           />
         </div>
-        <h3>{userInfo.name}</h3>
-        <TextArea
-          className="textarea"
-          name="content"
-          value={this.props.content}
-          onChange={this.props.handleChange}
-          placeholder="文明社会，理性评论..."
-          rows={4}
-        />
-        <div className="new-comment write-function-block">
-          {this.props.isSubmitLoading ? (
-            <div href="/" className="btn btn-send">
-              发送中...
-            </div>
-          ) : (
-            <div
-              href="/"
-              onClick={this.props.handleAddComment}
-              className="btn btn-send"
-            >
-              发送
-            </div>
-          )}
-          <div className="cancel">取消</div>
+        <div className="comment-content">
+          <TextArea
+            className="textarea"
+            name="content"
+            value={this.props.content}
+            onChange={this.props.handleChange}
+            placeholder="随时愿意倾听你的声音！"
+            rows={4}
+          />
+          <div className="new-comment write-function-block">
+            {this.props.isSubmitLoading ? (
+              <div href="/" className="btn btn-send">
+                发送中...
+              </div>
+            ) : (
+              <Button
+                type="primary"
+                ghost
+                onClick={this.props.handleAddComment}
+                className="btn btn-send"
+              >
+                Send
+              </Button>
+            )}
+          </div>
         </div>
       </div>
     );

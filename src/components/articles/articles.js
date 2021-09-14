@@ -6,7 +6,6 @@ import { connect } from 'react-redux';
 import https from '../../utils/https';
 import urls from '../../utils/urls';
 import LoadingCom from '../loading/loading';
-import bg from '../../assets/bg.jpg';
 import {
   throttle,
   getScrollTop,
@@ -196,7 +195,6 @@ class Articles extends Component {
                     className="img-blur-done"
                     data-src={item.img_url}
                     data-has-lazy-src="false"
-                    src={bg}
                     alt="文章封面"
                   />
                 </Link>)

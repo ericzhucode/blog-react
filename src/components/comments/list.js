@@ -6,6 +6,7 @@ import urls from '../../utils/urls';
 import { timestampToTime } from '../../utils/utils';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import ChildrenComment from './childrenComment.js';
+import GuestIcon from '../../assets/GuestIcon.png'
 
 class CommentList extends Component {
   constructor(props) {
@@ -80,7 +81,7 @@ class CommentList extends Component {
     });
   }
 
-  componentWillMount() {}
+  componentWillMount() { }
 
   handleAddOtherComment() {
     if (!this.state.comment_id) {
@@ -162,35 +163,33 @@ class CommentList extends Component {
         transitionLeaveTimeout={1000}
       >
         <div className="item">
-          <div className="item-header">
-            <div className="author">
-              <div className="avator">
-                <Avatar size="large" icon="user" src={item.user.avatar} />
-              </div>
+          <div className="sg-comment">
+            <div className="sg-comment-avator">
+              <Avatar size={70} icon="user" src={GuestIcon} />
             </div>
-            <div className="info">
-              <div className="name">
-                {item.user.name}
-                {item.user.type === 0 ? '(作者)' : ''}
+            <div className="sg-comment-content">
+              <div className="sg-comment-header">
+                <div className="name">
+                  {item.user.name}
+                  {item.user.type === 0 ? ' [作者]' : ''}
+                </div>
+                <div className="time">
+                  {item.create_time
+                    ? timestampToTime(item.create_time, true)
+                    : ''}
+                </div>
               </div>
-              <div className="time">
-                {item.create_time
-                  ? timestampToTime(item.create_time, true)
-                  : ''}
-              </div>
+              <div className="sg-comment-detail">{item.content}</div>
             </div>
           </div>
-          <div className="comment-detail">{item.content}</div>
+
           <div className="item-comment">
-            {/* <div className="like" >
-							<Avatar size="small" icon="like" /> 赞
-						</div> */}
-            <div
+            {/* <div
               onClick={() => this.showCommentModal(item)}
               className="message"
             >
               <Avatar size="small" icon="message" /> 回复
-            </div>
+            </div> */}
           </div>
           {item.other_comments.map((e, index) => {
             return (
@@ -204,7 +203,7 @@ class CommentList extends Component {
                   <div className="info">
                     <div className="name">
                       {e.user.name}
-                      {e.user.type === 0 ? '(作者)' : ''}
+                      {e.user.type === 0 ? '[作者]' : ''}
                     </div>
                     <div className="time">
                       {e.create_time
@@ -215,7 +214,7 @@ class CommentList extends Component {
                 </div>
                 <div className="comment-detail">
                   {'@' + e.to_user.name}
-                  {e.to_user.type === 0 ? '(作者)' : ''}：{e.content}
+                  {e.to_user.type === 0 ? '[作者]' : ''}：{e.content}
                 </div>
                 <div className="item-comment">
                   {/* <a className="like">
@@ -238,7 +237,7 @@ class CommentList extends Component {
     return (
       <div className="comment-list">
         <div className="top-title">
-          <span>{this.props.numbers} 条评论</span>
+          <span>{this.props.numbers} comments </span>
         </div>
         <Spin spinning={this.state.isLoading}>{list}</Spin>
         <ChildrenComment
