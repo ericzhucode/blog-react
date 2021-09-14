@@ -30,7 +30,7 @@ class Index extends Component {
           <div className="wrapper">
             <div className="home-header">
               <Link className="link" to={`/about`}>
-                <img className="home-logo" src={logo} alt="Shu Shu Logo" />
+                <img className="home-logo" src={logo} alt="Shu Logo" />
               </Link>
             </div>
             <div className="home-body">

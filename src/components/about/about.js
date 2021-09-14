@@ -27,7 +27,7 @@ class About extends Component {
       type: 1, //文章类型 => 1: 普通文章，2: 简历，3: 管理员介绍
       articleDetail: {
         _id: '',
-        author: 'Shu Shu',
+        author: 'Shu',
         category: [],
         comments: [],
         create_time: '',
@@ -226,10 +226,10 @@ class About extends Component {
   }
 
   componentWillUnmount() {
-    document.title = 'Shu Shu 的博客网站';
+    document.title = 'Shu 的博客网站';
     document
       .getElementById('keywords')
-      .setAttribute('content', 'Shu Shu 的博客网站');
+      .setAttribute('content', 'Shu 的博客网站');
     document
       .getElementById('description')
       .setAttribute(
@@ -269,52 +269,29 @@ class About extends Component {
         <div className="detail fl" style={{ width: width, margin: "0 auto" }}>
           <div className="header">
             <div className="title">{this.state.articleDetail.title}</div>
-            <div className="author">
-              <div className="avatar">
-                <Avatar
-                  className="auth-logo"
-                  src={logo}
-                  size={50}
-                  icon="user"
-                />
-              </div>{' '}
-              <div className="info">
-                <span className="name">
-                  <span>{this.state.articleDetail.author}</span>
-                </span>
-                <div
-                  props-data-classes="user-follow-button-header"
-                  data-author-follow-button=""
-                />
-                <div className="meta">
-                  <span className="publish-time">
-                    {this.state.articleDetail.create_time
-                      ? timestampToTime(
-                        this.state.articleDetail.create_time,
-                        true,
-                      )
-                      : ''}
-                  </span>
-                  <span className="wordage">
-                    字数 {this.state.articleDetail.numbers}
-                  </span>
-                  <span className="views-count">
-                    阅读 {this.state.articleDetail.meta.views}
-                  </span>
-                  <span className="comments-count">
-                    评论 {this.state.articleDetail.meta.comments}
-                  </span>
-                  <span className="likes-count">
-                    喜欢 {this.state.articleDetail.meta.likes}
-                  </span>
-                </div>
-              </div>
-              <div className="tags " title="标签">
-                <Icon type="tags" theme="outlined" />
-                {list}
-              </div>
-              <span className="clearfix" />
+            <div className="meta">
+              <span className="publish-time">
+                {this.state.articleDetail.create_time
+                  ? timestampToTime(
+                    this.state.articleDetail.create_time,
+                    true,
+                  )
+                  : ''}
+              </span>
+              <span className="wordage">
+                字数 {this.state.articleDetail.numbers}
+              </span>
+              <span className="views-count">
+                阅读 {this.state.articleDetail.meta.views}
+              </span>
+              <span className="comments-count">
+                评论 {this.state.articleDetail.meta.comments}
+              </span>
+              <span className="likes-count">
+                喜欢 {this.state.articleDetail.meta.likes}
+              </span>
             </div>
+            <span className="clearfix" />
           </div>
 
           {this.state.isLoading ? <LoadingCom /> : ''}

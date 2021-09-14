@@ -20,7 +20,7 @@ class CommentList extends Component {
       articleDetail: {
         _id: '',
         content: '',
-        author: 'biaochenxuying',
+        author: 'zhugangsong',
         category: [],
         comments: [],
         create_time: '',
