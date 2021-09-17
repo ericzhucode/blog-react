@@ -1,8 +1,10 @@
 import './index.less';
 import React, { Component } from 'react';
-import { Input, Button, Icon, message } from 'antd';
+import { Input, Button, message } from 'antd';
 import https from '../../utils/https';
 import urls from '../../utils/urls';
+
+const { TextArea } = Input;
 
 class TimeLineCustom extends Component {
   constructor(props) {
@@ -104,7 +106,6 @@ class TimeLineCustom extends Component {
         <div className="">
           <Input
             style={{ marginBottom: 40 }}
-            prefix={<Icon type="safety" style={{ color: 'rgba(0,0,0,.25)' }} />}
             name="email"
             placeholder="邮箱（不能为空）"
             value={this.state.email}
@@ -112,7 +113,6 @@ class TimeLineCustom extends Component {
           />
           <Input
             style={{ marginBottom: 40 }}
-            prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
             name="name"
             placeholder="名字（可为空）"
             value={this.state.name}
@@ -120,17 +120,14 @@ class TimeLineCustom extends Component {
           />
           <Input
             style={{ marginBottom: 40 }}
-            prefix={<Icon type="phone" style={{ color: 'rgba(0,0,0,.25)' }} />}
             name="phone"
             placeholder="手机（可为空）"
             value={this.state.phone}
             onChange={this.handleChange}
           />
-          <Input
+          <TextArea
             style={{ marginBottom: 40 }}
-            prefix={
-              <Icon type="message" style={{ color: 'rgba(0,0,0,.25)' }} />
-            }
+            rows={3}
             name="content"
             placeholder="留言内容（不能为空）"
             value={this.state.content}

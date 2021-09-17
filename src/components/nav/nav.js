@@ -4,7 +4,6 @@ import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import {
   Layout,
-  Icon,
   Menu,
   Row,
   Col,
@@ -13,14 +12,15 @@ import {
   message,
 } from 'antd';
 import {
-  FireOutlined,
+  HomeOutlined,
   CodeOutlined,
-  ProjectOutlined,
   CommentOutlined,
   ContactsOutlined,
   BarsOutlined,
   CarOutlined,
-  EditOutlined
+  EditOutlined,
+  LoginOutlined,
+  LogoutOutlined
 } from '@ant-design/icons';
 import Register from '../register/register';
 import Login from '../login/login';
@@ -107,17 +107,11 @@ class Nav extends Component {
     } else if (name === '/notes') {
       key = '3';
       navTitle = '随笔';
-    } else if (name === '/archive') {
-      key = '4';
-      navTitle = '归档';
-    } else if (name === '/hot') {
-      key = '5';
-      navTitle = '热门';
     } else if (name === '/message') {
-      key = '6';
+      key = '4';
       navTitle = '留言';
     } else if (name === '/about') {
-      key = '7';
+      key = '5';
       navTitle = '关于';
     }
     console.log('menuCurrent', key);
@@ -228,7 +222,7 @@ class Nav extends Component {
     const { menuCurrent } = this.state
 
     return (
-      <div className="left">
+      <div className="navbar">
         {this.props.isMobile ? (
           <Header
             className="header"
@@ -272,7 +266,7 @@ class Nav extends Component {
           <div className="sider">
             <div className="nav-logo" style={{ textAlign: 'center' }}>
               <Link to="/" >
-                <img src={blogLogo} alt="" style={{ width: '40%', borderRadius: '25px' }} />
+                <img src={blogLogo} alt="" style={{ width: '65%', borderRadius: '25px' }} />
               </Link>
               <p className="name">
                 Shu Shu
@@ -301,22 +295,12 @@ class Nav extends Component {
                     随笔
                   </Link>
                 </Menu.Item>
-                <Menu.Item key="4" icon={<ProjectOutlined />}>
-                  <Link to="/archive">
-                    归档
-                  </Link>
-                </Menu.Item>
-                <Menu.Item key="5" icon={<FireOutlined />}>
-                  <Link to="/hot">
-                    热门
-                  </Link>
-                </Menu.Item>
-                <Menu.Item key="6" icon={<CommentOutlined />}>
+                <Menu.Item key="4" icon={<CommentOutlined />}>
                   <Link to="/message">
                     留言
                   </Link>
                 </Menu.Item>
-                <Menu.Item key="7" icon={<ContactsOutlined />}>
+                <Menu.Item key="5" icon={<ContactsOutlined />}>
                   <Link to="/about">
                     关于
                   </Link>
@@ -353,47 +337,36 @@ class Nav extends Component {
           closable={false}
           onClose={this.onClose}
           visible={this.state.visible}
-          height={420}
         >
           <div className="drawer">
             <p onClick={this.onClose}>
               <Link to="/">
-                <Icon type="home" /> 首页
+                <HomeOutlined />首页
               </Link>
             </p>
             <p onClick={this.onClose}>
               <Link to="/articles">
-                <Icon type="ordered-list" /> 文章
+                <CodeOutlined /> 技术
               </Link>
             </p>
             <p onClick={this.onClose}>
-              <Link to="/hot">
-                <Icon type="fire" onClick={this.showLoginModal} /> 热门
+              <Link to="/articles">
+                <CarOutlined /> 旅游
               </Link>
             </p>
             <p onClick={this.onClose}>
-              <Link to="/archive">
-                <Icon type="project" onClick={this.showLoginModal} /> 归档
-              </Link>
-            </p>
-            <p onClick={this.onClose}>
-              <Link to="/project">
-                <Icon type="project" onClick={this.showLoginModal} /> 项目
-              </Link>
-            </p>
-            <p onClick={this.onClose}>
-              <Link to="/timeLine">
-                <Icon type="hourglass" onClick={this.showLoginModal} /> 历程
+              <Link to="/articles">
+                <EditOutlined /> 随笔
               </Link>
             </p>
             <p onClick={this.onClose}>
               <Link to="/message">
-                <Icon type="message" onClick={this.showLoginModal} /> 留言
+                <CommentOutlined /> 留言
               </Link>
             </p>
             <p onClick={this.onClose}>
               <Link to="/about">
-                <Icon type="user" onClick={this.showLoginModal} /> 关于
+                <ContactsOutlined /> 关于
               </Link>
             </p>
 
@@ -401,16 +374,13 @@ class Nav extends Component {
               <div onClick={this.handleLogout}>
                 <p>{userInfo.name}</p>
                 <p>
-                  <Icon type="logout" /> 退出{' '}
+                  <LogoutOutlined /> 退出{' '}
                 </p>
               </div>
             ) : (
               <div>
                 <p onClick={this.showLoginModal}>
-                  <Icon type="login" /> 登录
-                </p>
-                <p onClick={this.showRegisterModal}>
-                  <Icon type="registry" /> 注册{' '}
+                  <LoginOutlined /> 登录 / 注册
                 </p>
               </div>
             )}
