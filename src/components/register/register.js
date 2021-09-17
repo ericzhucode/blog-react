@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Modal, Input, Icon, message, Button } from 'antd';
+import { Modal, Input, message, Button } from 'antd';
 import { connect } from 'react-redux';
 import { registerSuccess, registerFailue } from '../../store/actions/user';
 import https from '../../utils/https';
@@ -105,7 +105,6 @@ class Register extends Component {
         <div className="register-input">
           <Input
             style={{ marginBottom: 20 }}
-            prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
             name="email"
             placeholder="请输入邮箱"
             value={this.state.email}
@@ -113,7 +112,6 @@ class Register extends Component {
           />
           <Input
             style={{ marginBottom: 20 }}
-            prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
             name="name"
             placeholder="请输入用户名"
             value={this.state.name}
@@ -121,7 +119,6 @@ class Register extends Component {
           />
           <Input
             style={{ marginBottom: 20 }}
-            prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
             type="password"
             name="password"
             placeholder="请输入密码"
@@ -130,7 +127,6 @@ class Register extends Component {
           />
           <Input
             style={{ marginBottom: 20 }}
-            prefix={<Icon type="phone" style={{ color: 'rgba(0,0,0,.25)' }} />}
             name="phone"
             placeholder="请输入手机（可为空）"
             value={this.state.phone}
@@ -138,7 +134,6 @@ class Register extends Component {
           />
           <Input
             style={{ marginBottom: 40 }}
-            prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
             name="introduce"
             placeholder="请输入个人介绍（可为空）"
             value={this.state.introduce}

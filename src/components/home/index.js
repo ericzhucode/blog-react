@@ -2,7 +2,7 @@ import './index.less';
 import logo from '../../assets/blogLogo.png';
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import Background from '../../assets/backgroundimg.jpg'
+import Background from '../../assets/background-home.jpg'
 import {
   GithubOutlined,
   ZhihuOutlined,
@@ -38,7 +38,7 @@ class Index extends Component {
               {/* 不做开发，死不瞑目
               加班到天明，学习到昏厥 */}
               <div className="motto"> 如果事与愿违，一定另有安排 ！ </div>
-              <hr class="seperator" />
+              <hr className="seperator" />
               <div className="list-internal">
                 <Link className="link" to={`/articles`}>
                   技术

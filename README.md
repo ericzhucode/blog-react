@@ -1,4 +1,4 @@
-![主页](https://upload-images.jianshu.io/upload_images/12890819-8420689b7238972a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![主页](src/assets/homepage.png)
 
 ## 前言
 
@@ -131,7 +131,6 @@ npm run build 或者 yarn run build
 
 > [blog：https://github.com/biaochenxuying/blog](https://github.com/biaochenxuying/blog)
 
-
 **本博客系统的系列文章：**
 
 - 1. [react + node + express + ant + mongodb 的简洁兼时尚的博客网站](https://biaochenxuying.cn/articleDetail?article_id=5bf57a8f85e0f13af26e579b)
@@ -141,8 +140,7 @@ npm run build 或者 yarn run build
 - 5. [github 授权登录教程与如何设计第三方授权登录的用户表](https://biaochenxuying.cn/articleDetail?article_id=5c7bd34e42b55e2ecc90976d)
 - 6. [一次网站的性能优化之路 -- 天下武功，唯快不破](https://biaochenxuying.cn/articleDetail?article_id=5c8ca2d3b87b8a04f1860c9a)
 - 7. [Vue + TypeScript + Element 搭建简洁时尚的博客网站及踩坑记](https://biaochenxuying.cn/articleDetail?article_id=5c9d8ce5f181945ddd6b0ffc)
-- 8. [前端解决第三方图片防盗链的办法 - html referrer 访问图片资源403问题](https://biaochenxuying.cn/articleDetail?article_id=5cfcc6798090bd3c84138a08)
-
+- 8. [前端解决第三方图片防盗链的办法 - html referrer 访问图片资源 403 问题](https://biaochenxuying.cn/articleDetail?article_id=5cfcc6798090bd3c84138a08)
 
 ## 服务器
 
@@ -156,14 +154,13 @@ npm run build 或者 yarn run build
 
 特别是大三和大四的学生，买了服务器，搭建个项目给面试官看也香，对找工作和面试都加分，还可以熟悉技术栈。
 
-[想学得快，就得有自己的服务器来折腾才行（低于 1 折、89/年、229/3年，比学生机还便宜）](https://biaochenxuying.cn/articleDetail?article_id=5de65dd90283dc742f8f633a)
+[想学得快，就得有自己的服务器来折腾才行（低于 1 折、89/年、229/3 年，比学生机还便宜）](https://biaochenxuying.cn/articleDetail?article_id=5de65dd90283dc742f8f633a)
 
 比如笔者的两个网站：
 
 > https://biaochenxuying.cn/
 
 > https://www.kwgg2020.com/
-
 
 ## 最后
 

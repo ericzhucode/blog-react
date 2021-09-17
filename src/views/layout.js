@@ -18,7 +18,7 @@ class Layouts extends Component {
   componentDidMount() {
     if (isMobileOrPc()) {
       this.setState({
-        isMobile: true,
+        isMobile: true
       });
     }
   }
@@ -28,13 +28,6 @@ class Layouts extends Component {
     let isIndexPage = false;
     if (pathName === '/') {
       isIndexPage = true;
-    }
-
-    let layoutWidth = "75%";
-    let layoutMaxWidth = 1200;
-    if (pathName === '/articles') {
-      layoutWidth = "50%";
-      layoutMaxWidth = 600;
     }
     return (
       <div className="Layouts">
@@ -55,8 +48,8 @@ class Layouts extends Component {
                   <Nav pathname={this.props.location.pathname} isMobile={this.state.isMobile} />
                 ) : ''}
                 <Content>
-                  <Layout style={{ margin: '30px auto', maxWidth: layoutMaxWidth, width: layoutWidth, background: "transparent" }}>
-                    <Content style={{ padding: "5px", minHeight: 280, minWidth: 500 }}>
+                  <Layout style={{ margin: '30px auto', background: "transparent" }}>
+                    <Content>
                       {this.props.children}
                     </Content>
                   </Layout>

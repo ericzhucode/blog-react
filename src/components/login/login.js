@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Modal, Input, Icon, message, Button } from 'antd';
+import { Modal, Input, message, Button } from 'antd';
 import { connect } from 'react-redux';
 import https from '../../utils/https';
 import urls from '../../utils/urls';
@@ -99,7 +99,6 @@ class Login extends Component {
         <div className="login-input">
           <Input
             style={{ marginBottom: 20 }}
-            prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
             name="email"
             placeholder="email"
             value={this.state.email}
@@ -107,7 +106,6 @@ class Login extends Component {
           />
           <Input
             style={{ marginBottom: 40 }}
-            prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
             type="password"
             name="password"
             placeholder="Password"

@@ -1,10 +1,9 @@
 import './index.less';
 import './marked.css';
-import logo from '../../assets/blogLogo.png';
 import React, { Component } from 'react';
 import Comment from '../comments/comment';
 import CommentList from '../comments/list';
-import { Icon, Avatar, message } from 'antd';
+import { message } from 'antd';
 import https from '../../utils/https';
 import urls from '../../utils/urls';
 import LoadingCom from '../loading/loading';
@@ -258,11 +257,6 @@ class About extends Component {
   render() {
     console.log('isMobile :', this.state.isMobile);
     let width = this.state.isMobile ? '100%' : '90%';
-    const list = this.state.articleDetail.tags.map((item, i) => (
-      <span key={item.id} className="tag">
-        {item.name}
-      </span>
-    ));
 
     return (
       <div className="article clearfix">
@@ -270,17 +264,19 @@ class About extends Component {
           <div className="header">
             <div className="title">{this.state.articleDetail.title}</div>
             <div className="meta">
-              <span className="publish-time">
-                {this.state.articleDetail.create_time
-                  ? timestampToTime(
-                    this.state.articleDetail.create_time,
-                    true,
-                  )
-                  : ''}
-              </span>
-              <span className="wordage">
+              <div>
+                <span className="publish-time">
+                  {this.state.articleDetail.create_time
+                    ? timestampToTime(
+                      this.state.articleDetail.create_time,
+                      true,
+                    )
+                    : ''}
+                </span>
+              </div>
+              {/* <span className="wordage">
                 字数 {this.state.articleDetail.numbers}
-              </span>
+              </span> */}
               <span className="views-count">
                 阅读 {this.state.articleDetail.meta.views}
               </span>

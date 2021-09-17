@@ -2,11 +2,15 @@
   .container {
     width: 100% !important;
   }
-  .ant-layout-content {
-    padding: 0 !important;
-  }
   .Layouts .layout {
+    margin-top: 40px;
     width: 100% !important;
+    .ant-layout-content {
+      width: 100% !important;
+    }
+    .left {
+      width: 100% !important;
+    }
   }
 
   // 文章
@@ -27,14 +31,21 @@
     }
   }
 
-  // 导航
+  // 导航（移动端最上方）
+  // 左侧头像
   .logo {
     height: 50px;
     img {
       height: 100%;
       margin-left: 10px;
+      border-radius: 50%;
     }
   }
+  // 中间标题
+  .nav-title {
+    font-size: 26px;
+  }
+  // 右侧抽屉式导航
   .drawer {
     text-align: center;
     p {
@@ -51,14 +62,6 @@
         width: 100%;
       }
     }
-  }
-  .user-name {
-    position: relative;
-    top: -10px;
-    left: -10px;
-  }
-  .nav-title {
-    font-size: 26px;
   }
   .ant-drawer-body {
     padding: 0 !important;

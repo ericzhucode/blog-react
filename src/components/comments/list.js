@@ -164,8 +164,9 @@ class CommentList extends Component {
       >
         <div className="item">
           <div className="sg-comment">
+            {/* 评论区的头像 */}
             <div className="sg-comment-avator">
-              <Avatar size={70} icon="user" src={GuestIcon} />
+              <Avatar size={50} icon="user" src={GuestIcon} />
             </div>
             <div className="sg-comment-content">
               <div className="sg-comment-header">
@@ -197,7 +198,7 @@ class CommentList extends Component {
                 <div className="item-header">
                   <div className="author">
                     <div className="avator">
-                      <Avatar size="large" icon="user" src={e.user.avatar} />
+                      <Avatar size={20} icon="user" src={e.user.avatar} />
                     </div>
                   </div>
                   <div className="info">

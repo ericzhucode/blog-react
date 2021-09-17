@@ -34,36 +34,6 @@ let config = [
     }),
   },
   {
-    name: 'hot',
-    path: '/hot',
-    exact: true,
-    component: Loadable({
-      loader: () => import('../components/articles/articles.js'),
-      loading: loadingComponent,
-      delay: 300,
-    }),
-  },
-  {
-    name: 'archive',
-    path: '/archive',
-    exact: true,
-    component: Loadable({
-      loader: () => import('../components/archive/archive.js'),
-      loading: loadingComponent,
-      delay: 300,
-    }),
-  },
-  {
-    name: 'timeLine',
-    path: '/timeLine',
-    exact: true,
-    component: Loadable({
-      loader: () => import('../components/timeLine/timeLine.js'),
-      loading: loadingComponent,
-      delay: 300,
-    }),
-  },
-  {
     name: 'message',
     path: '/message',
     exact: true,
@@ -92,17 +62,7 @@ let config = [
       loading: loadingComponent,
       delay: 300,
     }),
-  },
-  {
-    name: 'project',
-    path: '/project',
-    exact: true,
-    component: Loadable({
-      loader: () => import('../components/project/project.js'),
-      loading: loadingComponent,
-      delay: 300,
-    }),
-  },
+  }
 ];
 
 export default config;
