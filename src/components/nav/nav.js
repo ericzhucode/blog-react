@@ -7,7 +7,6 @@ import {
   Menu,
   Row,
   Col,
-  Button,
   Drawer,
   message,
 } from 'antd';
@@ -19,8 +18,6 @@ import {
   BarsOutlined,
   CarOutlined,
   EditOutlined,
-  LoginOutlined,
-  LogoutOutlined
 } from '@ant-design/icons';
 import Register from '../register/register';
 import Login from '../login/login';
@@ -215,10 +212,10 @@ class Nav extends Component {
     });
   }
   render() {
-    let userInfo = '';
-    if (window.sessionStorage.userInfo) {
-      userInfo = JSON.parse(window.sessionStorage.userInfo);
-    }
+    // let userInfo = '';
+    // if (window.sessionStorage.userInfo) {
+    //   userInfo = JSON.parse(window.sessionStorage.userInfo);
+    // }
     const { menuCurrent } = this.state
 
     return (
@@ -307,7 +304,7 @@ class Nav extends Component {
                 </Menu.Item>
               </Menu>
             </div>
-            <div className="login">
+            {/* <div className="login">
               <Menu>
                 {userInfo ? (
                   <Menu.Item key="1">
@@ -329,7 +326,7 @@ class Nav extends Component {
                   </Menu.Item>
                 )}
               </Menu>
-            </div>
+            </div> */}
           </div>
         )}
         <Drawer
@@ -350,12 +347,12 @@ class Nav extends Component {
               </Link>
             </p>
             <p onClick={this.onClose}>
-              <Link to="/articles">
+              <Link to="/travel">
                 <CarOutlined /> 旅游
               </Link>
             </p>
             <p onClick={this.onClose}>
-              <Link to="/articles">
+              <Link to="/notes">
                 <EditOutlined /> 随笔
               </Link>
             </p>
@@ -370,7 +367,7 @@ class Nav extends Component {
               </Link>
             </p>
 
-            {userInfo ? (
+            {/* {userInfo ? (
               <div onClick={this.handleLogout}>
                 <p>{userInfo.name}</p>
                 <p>
@@ -383,7 +380,7 @@ class Nav extends Component {
                   <LoginOutlined /> 登录 / 注册
                 </p>
               </div>
-            )}
+            )} */}
           </div>
         </Drawer>
         <Login

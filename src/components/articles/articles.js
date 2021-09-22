@@ -8,9 +8,6 @@ import urls from '../../utils/urls';
 import LoadingCom from '../loading/loading';
 import {
   throttle,
-  getScrollTop,
-  getDocumentHeight,
-  getWindowHeight,
   getQueryStringByName,
   timestampToTime,
 } from '../../utils/utils';
@@ -60,6 +57,7 @@ class Articles extends Component {
       keyword: '',
       likes: '', // 是否是热门文章
       state: 1, // 文章发布状态 => 0 草稿，1 已发布,'' 代表所有文章
+      type: 0,
       tag_id: getQueryStringByName('tag_id'),
       tag_name: decodeURI(getQueryStringByName('tag_name')),
       category_id: getQueryStringByName('category_id'),
@@ -101,10 +99,24 @@ class Articles extends Component {
   }
 
   componentDidMount() {
-    if (this.props.location.pathname === '/hot') {
+    let type;
+    switch (this.props.location.pathname) {
+      case '/articles':
+        type = 1;
+        break;
+      case '/travel':
+        type = 2;
+        break;
+      case '/notes':
+        type = 3;
+        break;
+      default:
+        type = 0;
+    }
+    if (type) {
       this.setState(
         {
-          likes: true,
+          type,
         },
         () => {
           this.handleSearch();
@@ -113,14 +125,15 @@ class Articles extends Component {
     } else {
       this.handleSearch();
     }
-    window.onscroll = () => {
-      if (getScrollTop() + getWindowHeight() > getDocumentHeight() - 100) {
-        // 如果不是已经没有数据了，都可以继续滚动加载
-        if (this.state.isLoadEnd === false && this.state.isLoading === false) {
-          this.handleSearch();
-        }
-      }
-    };
+
+    // window.onscroll = () => {
+    //   if (getScrollTop() + getWindowHeight() > getDocumentHeight() - 100) {
+    //     // 如果不是已经没有数据了，都可以继续滚动加载
+    //     if (this.state.isLoadEnd === false && this.state.isLoading === false) {
+    //       this.handleSearch();
+    //     }
+    //   }
+    // };
 
     document.addEventListener('scroll', lazyload);
   }
@@ -141,6 +154,7 @@ class Articles extends Component {
             category_id: this.state.category_id,
             pageNum: this.state.pageNum,
             pageSize: this.state.pageSize,
+            type: this.state.type
           },
         },
         { withCredentials: true },

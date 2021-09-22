@@ -241,7 +241,7 @@ class About extends Component {
     if (this.props.location.pathname === '/about') {
       this.setState(
         {
-          type: 3, // 文章类型: 3 是博主简介
+          type: 4, // 文章类型: 4 是个人介绍
         },
         () => {
           let article_id = getQueryStringByName('article_id');

@@ -43,10 +43,10 @@ class Index extends Component {
                 <Link className="link" to={`/articles`}>
                   技术
                 </Link>
-                <Link className="link" to={`/project`}>
+                <Link className="link" to={`/travel`}>
                   旅游
                 </Link>
-                <Link className="link" to={`/project`}>
+                <Link className="link" to={`/notes`}>
                   随笔
                 </Link>
                 <Link className="link" to={`/about`}>

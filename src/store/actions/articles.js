@@ -15,7 +15,6 @@ export function saveArticlesList(data) {
 /**
  * aysnc function
  */
-
 export function getArticlesList({ keyword, likes, state, pageNum, pageSize }) {
   return dispatch => {
     https

@@ -34,6 +34,26 @@ let config = [
     }),
   },
   {
+    name: 'travel',
+    path: '/travel',
+    exact: true,
+    component: Loadable({
+      loader: () => import('../components/articles/articles.js'),
+      loading: loadingComponent,
+      delay: 300,
+    })
+  },
+  {
+    name: 'notes',
+    path: '/notes',
+    exact: true,
+    component: Loadable({
+      loader: () => import('../components/articles/articles.js'),
+      loading: loadingComponent,
+      delay: 300,
+    })
+  },
+  {
     name: 'message',
     path: '/message',
     exact: true,
